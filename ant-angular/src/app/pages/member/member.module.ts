@@ -1,8 +1,8 @@
-import { NgModule } from "@angular/core";
+import {NgModule} from '@angular/core';
 
-import { MemberRoutingModule } from "./member-routing.module";
+import {MemberRoutingModule} from './member-routing.module';
 
-import { MemberComponent } from "./member.component";
+import {MemberComponent} from './member.component';
 
 @NgModule({
   imports: [MemberRoutingModule],
