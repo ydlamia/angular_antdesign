@@ -5,8 +5,7 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/member'},
   {
     path: 'member',
-    loadChildren: () =>
-      import('./pages/member/member.module').then(m => m.MemberModule)
+    loadChildren: () => import('./pages/member/member.module').then(m => m.MemberModule)
   }
 ];
 
