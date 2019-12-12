@@ -1,21 +1,24 @@
 <div>
-  <!-- <a nz-dropdown [nzDropdownMenu]="menu">
-    Hover me
-    <i nz-icon nzType="down"></i>
-  </a>
-  <nz-dropdown-menu #menu="nzDropdownMenu">
-    <ul nz-menu nzSelectable>
-      <li nz-menu-item>1st menu item</li>
-      <li nz-menu-item>2nd menu item</li>
-      <li nz-menu-item>3rd menu item</li>
-    </ul>
-  </nz-dropdown-menu> -->
-  <!-- <nz-dropdown-menu #menu4="nzDropdownMenu">
-    <ul nz-menu>
-      <li nz-menu-item>menu4 1st menu item</li>
-      <li nz-menu-item>menu4 2nd menu item</li>
-      <li nz-menu-item>menu4 3rd menu item</li>
-    </ul>
-  </nz-dropdown-menu> -->
-  <button nz-button nzType="danger">Danger</button>
+  회원정보-
+  <span>{{ membername }}</span>
+  <nz-select [(ngModel)]="selectedValue" nzPlaceHolder="Choose">
+    <nz-option nzValue="first" nzLabel="첫달회원"></nz-option>
+    <nz-option nzValue="bikini" nzLabel="비키니 반"></nz-option>
+    <nz-option nzValue="reset" nzLabel="리셋 반"></nz-option>
+    <nz-option nzValue="master" nzLabel="마스터 반"></nz-option>
+  </nz-select>
+  <span>시작일</span>
+  <nz-date-picker [(ngModel)]="startdate" (ngModelChange)="onChange($event)"></nz-date-picker>
+  <span>만료일</span>
+  <nz-date-picker [(ngModel)]="enddate" (ngModelChange)="onChange($event)"></nz-date-picker>
+  만료까지
+  <span>{{ varifydate }} 일</span>
+</div>
+<div>
+  <nz-date-picker [(ngModel)]="checkdate" (ngModelChange)="onChange($event)"></nz-date-picker>
+  <button nz-button nzType="default">오늘 날짜로</button>
+  <button nz-button nzType="default">어제 날짜로1</button>
+  식사 후:<span>{{ afterBreakfastWeight }}</span> 취침 전:<span>{{ beforeSleepWeight }}</span>
+  <i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+  <i nz-icon [nzType]="'close-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb4d4b'"></i>
 </div>

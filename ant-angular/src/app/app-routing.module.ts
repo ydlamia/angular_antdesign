@@ -1,11 +1,13 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import {MemberComponent} from './pages/member/member.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/member'},
   {
     path: 'member',
-    loadChildren: () => import('./pages/member/member.module').then(m => m.MemberModule)
+    component: MemberComponent
+    // loadChildren: () => import('./pages/member/member.module').then(m => m.MemberModule)
   }
 ];
 

@@ -4,24 +4,19 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {IconsProviderModule} from './icons-provider.module';
-import {NgZorroAntdModule, NZ_I18N, en_US, NZ_CONFIG, NzConfig} from 'ng-zorro-antd';
+import {NgZorroAntdModule, NZ_I18N, en_US} from 'ng-zorro-antd';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {registerLocaleData} from '@angular/common';
 import en from '@angular/common/locales/en';
-import {NzButtonModule} from 'ng-zorro-antd/button';
-import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MemberComponent} from './pages/member/member.component';
 
 registerLocaleData(en);
 
-const ngZorroConfig: NzConfig = {
-  message: {nzTop: 120},
-  notification: {nzTop: 240}
-};
-
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MemberComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,10 +25,9 @@ const ngZorroConfig: NzConfig = {
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzButtonModule,
-    NzDropDownModule
+    ReactiveFormsModule
   ],
-  providers: [{provide: NZ_CONFIG, useValue: ngZorroConfig}],
+  providers: [{provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
