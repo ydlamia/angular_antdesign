@@ -19,6 +19,114 @@
   <button nz-button nzType="default">오늘 날짜로</button>
   <button nz-button nzType="default">어제 날짜로1</button>
   식사 후:<span>{{ afterBreakfastWeight }}</span> 취침 전:<span>{{ beforeSleepWeight }}</span>
-  <i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
-  <i nz-icon [nzType]="'close-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb4d4b'"></i>
+
+  <!-- 아침 식사 및 간식 -->
+  <p *ngIf="breakfastFood == undefined; then thenResult; else elseResult">{{ breakfastFood }}</p>
+  <ng-template #thenResult>
+    <i nz-icon [nzType]="'close-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb4d4b'"></i>
+  </ng-template>
+
+  <ng-template #elseResult>
+    <i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+  </ng-template>
+
+  아침
+  <input nz-input placeholder="breakfastFood" [(ngModel)]="breakfastFood" [disabled]="true" />
+  <input nz-input [placeholder]="breakfastSnack" [(ngModel)]="breakfastSnack" [disabled]="true" />
+
+  <!-- 점심 식사 및 간식 -->
+  <p *ngIf="lunchFood == undefined; then thenResult; else elseResult">{{ lunchFood }}</p>
+  <ng-template #thenResult>
+    <i nz-icon [nzType]="'close-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb4d4b'"></i>
+  </ng-template>
+
+  <ng-template #elseResult>
+    <i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+  </ng-template>
+
+  점심
+  <input nz-input placeholder="lunchFood" [(ngModel)]="lunchFood" [disabled]="true" />
+  <input nz-input [placeholder]="lunchSnack" [(ngModel)]="lunchSnack" [disabled]="true" />
+
+  <!-- 저녁 식사 및 간식 -->
+  <p *ngIf="dinnerFood == undefined; then thenResult; else elseResult">{{ dinnerFood }}</p>
+  <ng-template #thenResult>
+    <i nz-icon [nzType]="'close-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb4d4b'"></i>
+  </ng-template>
+
+  <ng-template #elseResult>
+    <i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+  </ng-template>
+
+  저녁
+  <input nz-input placeholder="dinnerFood" [(ngModel)]="dinnerFood" [disabled]="true" />
+  <input nz-input [placeholder]="dinnerSnack" [(ngModel)]="dinnerSnack" [disabled]="true" />
+
+  <!-- 도장 이미지 -->
+  <!-- 1번 -->
+  <!-- <nz-upload
+    class="avatar-uploader1"
+    nzAction="http://192.168.0.84:3002/api/v1/upload/single"
+    nzName="avatar1"
+    nzListType="picture-card"
+    [nzShowUploadList]="false"
+    [nzBeforeUpload]="beforeUpload"
+    (nzChange)="handleChangeOne($event)"
+  >
+    <ng-container *ngIf="!avatarUrl1">
+      <i class="upload-icon" nz-icon [nzType]="loading1 ? 'loading' : 'plus'"></i>
+      <div class="ant-upload-text">Upload</div>
+    </ng-container>
+    <img *ngIf="avatarUrl1" [src]="avatarUrl1" class="avatar" />
+  </nz-upload>
+
+  <nz-upload
+    class="avatar-uploader2"
+    nzAction="http://192.168.0.84:3002/api/v1/upload/single"
+    nzName="avatar2"
+    nzListType="picture-card"
+    [nzShowUploadList]="false"
+    [nzBeforeUpload]="beforeUpload"
+    (nzChange)="handleChangeTwo($event)"
+  >
+    <ng-container *ngIf="!avatarUrl2">
+      <i class="upload-icon" nz-icon [nzType]="loading2 ? 'loading' : 'plus'"></i>
+      <div class="ant-upload-text">Upload</div>
+    </ng-container>
+    <img *ngIf="avatarUrl2" [src]="avatarUrl2" class="avatar" />
+  </nz-upload> -->
+
+  <!-- 도장 2 -->
+  <div class="clearfix">
+    <nz-upload
+      nzAction="https://jsonplaceholder.typicode.com/posts/"
+      nzListType="picture-card"
+      [(nzFileList)]="fileList"
+      [nzShowButton]="fileList.length < 2"
+      [nzShowUploadList]="showUploadList"
+      [nzPreview]="handlePreview"
+    >
+      <i nz-icon nzType="plus"></i>
+      <div class="ant-upload-text">Upload</div>
+    </nz-upload>
+    <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible = false">
+      <ng-template #modalContent>
+        <img [src]="previewImage" [ngStyle]="{width: '100%'}" />
+      </ng-template>
+    </nz-modal>
+  </div>
+
+  <!-- 각 시간별 몸무게 측정 결과 리스트 -->
+  <div>
+    <p *ngIf="wakeUpWeight == undefined; then thenResult; else elseResult">{{ wakeUpWeight }}</p>
+    <ng-template #thenResult>
+      <i nz-icon [nzType]="'close-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#eb4d4b'"></i>
+    </ng-template>
+
+    <ng-template #elseResult>
+      <i nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+    </ng-template>
+
+    기상체중
+  </div>
 </div>

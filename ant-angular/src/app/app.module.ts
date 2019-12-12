@@ -1,16 +1,18 @@
+//system or npm
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {IconsProviderModule} from './icons-provider.module';
-import {NgZorroAntdModule, NZ_I18N, en_US} from 'ng-zorro-antd';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {registerLocaleData} from '@angular/common';
+import {registerLocaleData, CommonModule} from '@angular/common';
 import en from '@angular/common/locales/en';
 import {ReactiveFormsModule} from '@angular/forms';
+import {NgZorroAntdModule, NZ_I18N, en_US} from 'ng-zorro-antd';
+
+//local
 import {MemberComponent} from './pages/member/member.component';
 
 registerLocaleData(en);
@@ -25,7 +27,8 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [{provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]
